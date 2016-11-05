@@ -1,0 +1,7 @@
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<%= simple_form_for @list  do |list| %>
+  <%= list.input :listname %>
+  <%= list.submit 'New List'%>
+<% end %>
