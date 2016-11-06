@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+    resources :lists
     root 'lists#index'
     get '/login' => 'sessions#new'
     post '/login' => 'sessions#create'
@@ -28,7 +29,7 @@ Rails.application.routes.draw do
     #           PATCH  /users/:id(.:format)      users#update
     #           PUT    /users/:id(.:format)      users#update
     #           DELETE /users/:id(.:format)      users#destroy
-    resources :lists
+
     resources :todos
     resources :users
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

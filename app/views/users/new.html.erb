@@ -1,7 +1,5 @@
 <% if flash[:notice] %>
 <%= flash[:notice] %>
 <% end %>
-<!-- This form is for users to create a new account for the first time -->
 <h1>Create an account.</h1>
-<!-- render form from simple form user goes back to the controller -->
-<%= render 'form', user: @user%>
+<%= render 'form', user: @user %>

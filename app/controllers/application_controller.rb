@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   protect_from_forgery with: :exception
 
   #not sure what a helper method is
@@ -7,8 +8,8 @@ class ApplicationController < ActionController::Base
 private
   #Identify current user by Sql query and assign to object @user
   def current_user
-    # @user assigned User by user_id if/when session is the same
-    @user ||= User.find(session[:user_id]) if session[:user_id]
+    # @currentuser assigned User by user_id if/when session is the same
+    @currentuser ||= User.find(session[:user_id]) if session[:user_id]
 
   end
 end

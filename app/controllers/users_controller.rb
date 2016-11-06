@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-#Pulls all users in the library when user controller is called
 def index
   @user=User.all
 end
