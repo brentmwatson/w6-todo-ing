@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-    resources :lists
+
+    resources :users
+    resources :lists do
+        resources :todos
+    end
     root 'lists#index'
     get '/login' => 'sessions#new'
     post '/login' => 'sessions#create'
     get '/logout' => 'sessions#destroy'
-
+    # get 'lists/:list_id/todo/new' => 'list#new' as: :new_todo
     #   lists   GET    /lists(.:format)          lists#index
     #           POST   /lists(.:format)          lists#create
     # new_list  GET    /lists/new(.:format)      lists#new
@@ -30,7 +34,6 @@ Rails.application.routes.draw do
     #           PUT    /users/:id(.:format)      users#update
     #           DELETE /users/:id(.:format)      users#destroy
 
-    resources :todos
-    resources :users
+
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,8 +1,9 @@
-<h2>Welcome to your personal 'Todo' list.</h2>
+<h2>Welcome to your personal 'Todo' list, <%= current_user.username %> </h2>
 
 <% @lists.each do |list| %>
 <div>
   <h4><%= list.listname %></h4>
+  <button><%= link_to 'New Todo', new_list_todo_path(list) %></button>
 </div>
 
 <% end %>

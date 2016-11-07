@@ -20,18 +20,26 @@ class ListsController < ApplicationController
         # SAVES and REDIRECTS
         @list = List.new(list_params) # assign :listname to object @list
         @list.user = current_user #assign :user_id to object @list
-
         # @list now is [:listname :user_id]
-
-        if @list.save! # if save occures
+        if @list.save # if save occures
             flash[:notice] = 'List created successfully.' # flash for user
-            # @list=current_user.list.new(list_params)
-            # ****might nedd to be moved to before if^
             redirect_to root_path
         else
             render :new
         end
     end
+
+      # def edit #Displays form for EXISTING record
+      #   #HAS TEMPLATE
+      # end
+
+      # def update #saves changes to EXISTING record
+      #   #SAVES AND REDIRECTS
+      # end
+
+      def destroy #DESTROYS and REDIRECTS
+      end
+
 
 private
 
