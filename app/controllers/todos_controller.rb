@@ -17,8 +17,9 @@ end
 def create
   # saves a new record and redirects
   @todo=Todo.new(todo_params)
+  @list = List.find(params[:list_id])
   #assign list_id from nested route with instance variable
-  @todo.list_id=@list
+  @todo.list = @list
   if @todo.save
     flash[:notice] = 'Todo created successfully.' # flash for user
       redirect_to root_path
