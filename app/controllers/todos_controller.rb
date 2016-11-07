@@ -11,14 +11,14 @@ end
 def new
   #has a TEMPLATE and diplays a form
   @todo=Todo.new
-  @todo.list_id=@list.todos.new(param)
+  # @list = List.find.params
 end
 
 def create
   # saves a new record and redirects
   @todo=Todo.new(todo_params)
   #assign list_id from nested route with instance variable
-  @todo.list_id=@list.id
+  @todo.list_id=@list
   if @todo.save
     flash[:notice] = 'Todo created successfully.' # flash for user
       redirect_to root_path
@@ -43,10 +43,8 @@ end
 private
 
 def todo_params
-  params.require (:todo).permit(:task)
+  params.require(:todo).permit(:task)
 end
-
-def list_params
 
 
 end
