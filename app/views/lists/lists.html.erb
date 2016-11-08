@@ -1,34 +1,32 @@
-<div class="container">
-    <div class="row">
-        <h2>Your list,
-            <%= current_user.name %>
-        </h2>
-    </div>
-    <div class="row">
-        <div><% @lists.each do |list| %>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <h4><%= list.listname %></h4>
+<div class="row">
+    <h2>Your list,
+        <%= current_user.name %>
+    </h2>
+</div>
+<div class="row">
+    <div><% @lists.each do |list| %>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <h4><%= list.listname %></h4>
+            <div>
+                <% list.todos.each do |todo| %>
                 <div>
-                    <% list.todos.each do |todo| %>
-                    <div>
-                        <% if todo.status != true %>
-                            <%= todo.task %>
-                            <%= link_to '- Mark as complete', complete_path(list, todo) %>
-                        <% else %>
-                            <strike><%= todo.task %></strike>
-                        <% end %>
+                    <% if todo.status != true %>
+                    <%= todo.task %>
+                    <%= link_to '- Mark as complete', complete_path(list, todo) %>
+                <% else %>
+                    <strike><%= todo.task %></strike>
+                    <% end %>
 
-                    </div>
-                                        <% end %>
                 </div>
-
-                <button type="button btn btn-primary" class="btn btn-default btn-md primary-label">
-                    <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
-                    <%= link_to 'New Todo', new_list_todo_path(list) %>
-                </button>
+                <% end %>
             </div>
-        <% end %>
-        </div>
 
+            <button type="button btn btn-primary" class="btn btn-default btn-md primary-label">
+                <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+                <%= link_to 'New Todo', new_list_todo_path(list) %>
+            </button>
+        </div>
+        <% end %>
     </div>
+
 </div>
