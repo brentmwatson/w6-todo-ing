@@ -12,18 +12,24 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <%= link_to 'ToDo-ing', root_path, class:"navbar-brand"%>
+                    <%= link_to 'Todoing', root_path, class:"navbar-brand"%>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active">
-                        <%= link_to 'Sign up', new_user_path, class:"navbar-link navbar-text"%>
-                    </li>
-                <li>
-                    <%= link_to "Sign-out", logout_path, class:"navbar-link navbar-text"%>
-                </li>
-                <li>
-                    <%= link_to 'New List', new_list_path, class:"navbar-link navbar-text"%>
-                </li>
+                    <% if @currentuser.present? %>
+                        <li>
+                            <%= link_to 'New List', new_list_path, class:"navbar-link navbar-text"%>
+                        </li>
+                        <li>
+                            <%= link_to "Sign-out", logout_path, class:"navbar-link navbar-text"%>
+                        </li>
+                    <% else %>
+                        <li>
+                            <%= link_to 'Sign up', new_user_path, class:"navbar-link navbar-text"%>
+                        </li>
+                        <li>
+                            <%= link_to 'Log in', login_path, class:"navbar-link navbar-text"%>
+                        </li>
+                    <% end %>
                 </ul>
             </div>
         </nav>

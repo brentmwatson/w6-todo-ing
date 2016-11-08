@@ -9,6 +9,10 @@ class ListsController < ApplicationController
         end
     end
 
+    def show
+        
+    end
+
     def new
         # displays the form for NEW record
         # HAS TEMPLATE

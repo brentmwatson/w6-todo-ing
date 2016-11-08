@@ -2,7 +2,7 @@ class Todo < ApplicationRecord
 
 belongs_to :list
 
-validates :listname, :task,
+validates :task,
     presence: true,
     uniqueness: true
 

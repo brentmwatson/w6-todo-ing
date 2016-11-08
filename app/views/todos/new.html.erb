@@ -1,4 +1,4 @@
-<%= simple_form_for ([:list, @todo]) do |f| %>
+<%= simple_form_for [@list, @todo] do |f| %>
   <%= f.input :task %>
   <%= f.submit %>
   <% end %>

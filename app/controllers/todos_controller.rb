@@ -11,7 +11,7 @@ end
 def new
   #has a TEMPLATE and diplays a form
   @todo=Todo.new
-  # @list = List.find.params
+  @list = List.find(params[:list_id])
 end
 
 def create
@@ -19,7 +19,7 @@ def create
   @todo=Todo.new(todo_params)
   @list = List.find(params[:list_id])
   #assign list_id from nested route with instance variable
-  @todo.list = @list
+  @todo.list_id = @list.id
   if @todo.save
     flash[:notice] = 'Todo created successfully.' # flash for user
       redirect_to root_path
@@ -30,12 +30,14 @@ def create
 
 end
 
-def edit
-  #has a TEMPLATE and displays a form of exsisting record
-end
-
 def update
-  # saves an exsisting record  and redirects
+  Rails.logger.info("hey")
+  @todo=Todo.find(params[:id])
+  @todo.status = true
+  if @todo.save!
+    flash[:notice] = 'Task finished.' # flash for user
+      redirect_to root_path
+  end
 end
 
 def destroy
